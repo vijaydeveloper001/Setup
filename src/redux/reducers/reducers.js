@@ -7,7 +7,8 @@ export interface CounterState {
 
 const initialState: CounterState = {
   value: {
-    data:[{title:'Hello Worlds',id:1}]
+    data:[{title:'Hello Worlds',id:0}],
+    index:''
   },
 }
 
@@ -19,12 +20,12 @@ export const counterSlice = createSlice({
         state.value.data = action.payload
     },
     updatetodo:(state,action) =>{
-        state.value.data = action.payload
+        state.value.index = action.payload
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addtodo } = counterSlice.actions
+export const { addtodo,updatetodo } = counterSlice.actions
 
 export default counterSlice.reducer

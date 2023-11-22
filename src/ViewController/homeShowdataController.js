@@ -17,8 +17,15 @@ export  function homeShowdataController() {
     const NewTodoNavigation = () =>{
         navigation.navigate(Screens.New)
     }
+    
     const onChangeText = (dt) =>{
-       setnewtodo({title:dt,id:2})
+    
+    data.map((item)=>{
+        if (item.id>item.id-1){
+
+            setnewtodo({title:dt,id:item.id+1})
+        }
+    })
     }
 
    

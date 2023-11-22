@@ -26,7 +26,7 @@ export default function Home() {
           backgroundColor: index % 2 == 0 ? '#D3D3D3' : 'white',
         }}
         onPress={() => updateNavigation(index)}>
-        <Text style={styles.Textdata}>{item.title}</Text>
+        <Text style={styles.Textdata}>{item?.title}</Text>
       </TouchableOpacity>
     );
   };

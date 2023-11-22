@@ -1,23 +1,38 @@
 import { StyleSheet, Text, View,TextInput } from 'react-native'
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Button from '../Common/Button'
 import updatedata from '../ViewController/updatedata'
 import {useSelector} from 'react-redux'
 export default function Update() {
-    const {updateNavigation} = updatedata()
+    const {updateNavigation,update,updatechage,updateTodo} = updatedata()
+    console.log(update)
+    const [updatedataa, setupdatedata] = useState()
     const data  = useSelector(state=>state.counterReducer.value.data)
+    const index  = useSelector(state=>state.counterReducer.value.index)
+    console.log(index)
     console.log(data)
+    useEffect(() => {
+        data.map((item)=>{
+            // console.log(item?.title)
+            if (item?.id==index){
+                setupdatedata(item?.title)
+            }
+        })
+    }, [index])
+    
+
+    
   return (
     <View style={styles.Main}>
     <TextInput
       placeholder="Update Todo"
-    //   value={newtodo}
+      defaultValue={updatedataa}
       style={styles.TextInputStyle}
-    //   onChangeText={onChangeText}
+      onChangeText={updatechage}
       
     />
     <View style={styles.Buttonmargin}>
-      <Button onpress={() => updateNavigation()} />
+      <Button onpress={() => updateTodo()} />
     </View>
   </View>
   )
